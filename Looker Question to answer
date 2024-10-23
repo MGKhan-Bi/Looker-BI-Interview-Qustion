@@ -1,0 +1,97 @@
+1. What is Looker, and how does it work?
+Answer:
+Looker is a cloud-based Business Intelligence (BI) and data analytics platform that allows organizations to explore, analyze, and visualize their data. It integrates with databases and uses SQL to query the data. Looker’s core component is LookML, a modeling language that defines the relationships between tables, dimensions, and measures, and enables users to create reusable data models for exploration and dashboarding.
+
+2. Explain the architecture of Looker.
+Answer:
+Looker connects directly to your database using JDBC or ODBC drivers, without needing to move data to another platform. The key components include:
+•	Looker UI: The user-facing interface for building queries, dashboards, and visualizations.
+•	LookML: A data modeling layer that abstracts SQL queries and organizes your data in a reusable, consistent format.
+•	Database: Looker works on top of your database, pushing down SQL queries for data extraction.
+•	Looker API: Allows for integration with other systems.
+
+3. What is LookML, and why is it important?
+Answer:
+LookML (Looker Modeling Language) is a proprietary language used to describe dimensions, measures, and data relationships in Looker. It is important because:
+•	It abstracts the complexity of SQL, making it easier to create reusable and scalable data models.
+•	It enables data centralization, ensuring that data is defined consistently across the organization.
+•	You can use LookML to define calculated fields, joins, and data logic once, and then reuse them across multiple reports and dashboards.
+
+4. How is LookML different from SQL?
+Answer:
+LookML is a modeling layer that sits on top of SQL. While SQL is used to query the database directly, LookML is used to define relationships and logic that generate SQL queries automatically. LookML offers reusability, maintainability, and consistency:
+•	LookML abstracts SQL, allowing developers to define data relationships and reusable logic in the form of dimensions, measures, and views.
+•	SQL is used for writing queries to fetch data, whereas LookML defines the data structure and relationships for generating those queries.
+
+5. What are Dimensions and Measures in Looker?
+Answer:
+•	Dimensions are individual columns or attributes in your database that can be used to slice and dice data (e.g., customer name, product category, order date). They describe data.
+•	Measures are aggregates or calculations performed on your data (e.g., total sales, count of orders). Measures summarize data.
+
+6. What is a Persistent Derived Table (PDT) in Looker, and when should you use it?
+Answer:
+A Persistent Derived Table (PDT) is a table that Looker creates in your database as a result of running a query. Unlike regular derived tables, which are created on the fly, PDTs persist in the database, improving performance by preventing repeated query execution. Use PDTs when:
+•	You need to run expensive or complex queries repeatedly.
+•	There are large datasets, and building the result set once rather than recalculating it every time is beneficial.
+
+7. Explain the difference between explore and view in LookML.
+Answer:
+•	Explore: Defines the starting point for a query, i.e., what data the user will be exploring. It specifies the set of tables and joins, as well as filters or constraints, that can be used in a particular data exploration.
+•	View: Represents a table or logical dataset in Looker. It defines dimensions, measures, and relationships based on the database schema. Multiple views can be used in a single Explore.
+
+8. How do you implement row-level security in Looker?
+Answer:
+You can implement row-level security in Looker by using:
+•	Access Filters: You can define access filters in LookML to restrict data access based on user attributes.
+•	User Attributes: These are custom properties assigned to users, such as region or department. You can use these attributes in LookML to filter the data that each user can see.
+
+9. What are Looker Blocks?
+Answer:
+Looker Blocks are pre-built data models that you can use to accelerate development. They are reusable templates for common analytics tasks or data sources, such as Google Analytics or Salesforce. These blocks help jumpstart the creation of dashboards, reports, and metrics without needing to write LookML from scratch.
+
+10. How does Looker handle joins between tables?
+Answer:
+In Looker, joins between tables are handled in the LookML layer. You can define relationships between tables in the explore section of LookML by specifying join types (INNER JOIN, LEFT JOIN, etc.), foreign key relationships, and the fields to join on. Looker then generates SQL queries based on these relationships.
+
+11. What is a dashboard in Looker, and how do you create one?
+Answer:
+A dashboard in Looker is a collection of visualizations (tiles) representing data from various explores. To create a dashboard:
+•	First, explore the data and save the results as Looks.
+•	Combine these Looks into a dashboard by adding them as tiles.
+•	You can customize the layout, filters, and interactivity of the dashboard.
+
+12. How can you optimize the performance of Looker queries?
+Answer:
+•	Use Persistent Derived Tables (PDTs) for frequently queried, complex data.
+•	Reduce the number of joins in a query or optimize the data model by avoiding unnecessary complexity.
+•	Utilize database-specific optimizations, such as partitioning or indexing.
+•	Use Looker’s caching feature to store results temporarily and reduce redundant database queries.
+
+13. What are Looker’s key visualizations, and how do you choose the right one?
+Answer:
+Looker supports various visualizations like bar charts, line charts, pie charts, heatmaps, and more. The right choice depends on the type of data and the story you're trying to tell:
+•	Bar/Column Charts: For comparing categories.
+•	Line Charts: For trends over time.
+•	Pie/Donut Charts: For showing proportions.
+•	Heatmaps: For showing density or correlations between two variables.
+•	Tables: For detailed data display.
+
+14. What are user attributes in Looker, and how can they be used?
+Answer:
+User attributes are custom fields associated with each user in Looker. They can be used for:
+•	Row-level security by filtering data based on the user’s department, region, etc.
+•	Customizing content by using user attributes to display different versions of reports or dashboards for different users.
+
+15. What are the benefits of using Looker over traditional BI tools?
+Answer:
+•	Centralized Data Modeling: Looker uses a single source of truth via LookML, ensuring consistent metrics across the organization.
+•	Direct Database Querying: Looker connects directly to the database, ensuring fresh data without the need for extracts or cubes.
+•	Flexibility: LookML allows for more flexible and reusable data modeling than traditional SQL-based tools.
+•	Scalability: Looker supports large datasets and can scale with cloud databases and data warehouses.
+
+16. What are derived tables in Looker, and when should you use them?
+Answer:
+Derived tables are SQL queries written within LookML that act like virtual tables. They are typically used to:
+•	Perform complex calculations or aggregations that would be difficult to do in a single SQL query.
+•	Pre-process data to simplify downstream queries. Use derived tables when the data structure is too complex to model directly or when you need a specific transformation.
+
